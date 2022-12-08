@@ -1,9 +1,17 @@
-
+# Imports for startup
+import os
+import subprocess
 # Imports of PY Libraries
-from libqtile import bar, layout, widget
+
+from libqtile import bar, layout, widget, hook
 from libqtile.config import Click, Drag, Group, Key, Match, Screen
 from libqtile.lazy import lazy
 # from libqtile.utils import guess_terminal
+
+@hook.subscribe.startup_once
+def autostart():
+    home = os.path.expanduser("~/.config/qtile/scripts/autostart.sh")
+    subprocess.Popen([home])
 
 # Variables
 mod = "mod4"
