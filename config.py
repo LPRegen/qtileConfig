@@ -80,7 +80,7 @@ keys = [
     # Key([mod], "r", lazy.spawncmd(prompt='Launch'), desc="Spawn a command using a prompt widget"),
 
     # Launch dmenu
-    Key([mod], "r", lazy.spawn("dmenu_run")),
+    Key([mod], "r", lazy.spawn("dmenu_run -c -l 20")),
 
     # Volume Control
     Key([], "XF86AudioLowerVolume", lazy.spawn("pactl set-sink-volume @DEFAULT_SINK@ -5%")),
