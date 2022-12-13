@@ -77,7 +77,10 @@ keys = [
     Key([mod, "control"], "q", lazy.shutdown(), desc="Shutdown Qtile"),
 
     # launcher
-    Key([mod], "r", lazy.spawncmd(prompt='Launch'), desc="Spawn a command using a prompt widget"),
+    # Key([mod], "r", lazy.spawncmd(prompt='Launch'), desc="Spawn a command using a prompt widget"),
+
+    # Launch dmenu
+    Key([mod], "r", lazy.spawn("dmenu_run")),
 
     # Volume Control
     Key([], "XF86AudioLowerVolume", lazy.spawn("pactl set-sink-volume @DEFAULT_SINK@ -5%")),
