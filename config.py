@@ -27,6 +27,9 @@ keys = [
     # A list of available commands that can be bound to keys can be found
     # at https://docs.qtile.org/en/latest/manual/config/lazy.html
 
+    # Switch between monitors
+    Key([mod], 'Tab', lazy.next_screen(), desc='Next monitor'),
+
     # Switch between windows
     Key([mod], "h", lazy.layout.left(), desc="Move focus to left"),
     Key([mod], "l", lazy.layout.right(), desc="Move focus to right"),
@@ -63,9 +66,17 @@ keys = [
 
     # Toggle between different layouts as defined below
     # Key([mod], "Tab", lazy.next_layout(), desc="Toggle between layouts"),
+
+    # Kill focused window.
     Key([mod], "w", lazy.window.kill(), desc="Kill focused window"),
+
+    # Reload Qtile configuration
     Key([mod, "control"], "r", lazy.reload_config(), desc="Reload the config"),
+
+    # Shutdown Qtile
     Key([mod, "control"], "q", lazy.shutdown(), desc="Shutdown Qtile"),
+
+    # launcher
     Key([mod], "r", lazy.spawncmd(prompt='Launch'), desc="Spawn a command using a prompt widget"),
 
     # Volume Control
