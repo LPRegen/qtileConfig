@@ -82,6 +82,9 @@ keys = [
     # Launch dmenu
     Key([mod], "r", lazy.spawn("dmenu_run -c -l 20")),
 
+    # Launch powermenu
+    Key([mod], "x", lazy.spawn("powermenu")),
+
     # Volume Control
     Key([], "XF86AudioLowerVolume", lazy.spawn("pactl set-sink-volume @DEFAULT_SINK@ -5%")),
     Key([], "XF86AudioRaiseVolume", lazy.spawn("pactl set-sink-volume @DEFAULT_SINK@ +5%")),
