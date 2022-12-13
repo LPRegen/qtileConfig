@@ -172,9 +172,6 @@ screens = [
 
                 widget.Spacer(),
 
-                # Thermal zone
-                # widget.ThermalZone(),
-
                 widget.Sep(padding=10),
 
                 # CPU thermal sensor
@@ -210,10 +207,6 @@ screens = [
 
                 # Keyboard layout
                 widget.KeyboardLayout(configured_keyboards=["us", "us colemak", "latam"], display_map={"us":"US", "us colemak":"CO", "latam":"LA"}),
-
-                widget.Sep(padding=10),
-                
-                widget.QuickExit(default_text='[ Logout ]'),
             ],
             24,
             # border_width=[0, 0, 2, 0],  # Draw top and bottom borders
