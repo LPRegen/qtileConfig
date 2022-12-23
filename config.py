@@ -1,13 +1,14 @@
 # Imports for startup
 import os
 import subprocess
-# Imports of PY Libraries
 
+# Imports of PY Libraries
 from libqtile import bar, layout, widget, hook
 from libqtile.config import Click, Drag, Group, Key, Match, Screen
 from libqtile.lazy import lazy
 # from libqtile.utils import guess_terminal
 
+# Hook for startup
 @hook.subscribe.startup_once
 def autostart():
     home = os.path.expanduser("~/.config/qtile/scripts/autostart.sh")
@@ -156,37 +157,38 @@ screens = [
         top=bar.Bar(
             [
                 # widget.CurrentLayout(max_chars=2),
-                widget.GroupBox(highlight_method='line'),
+                widget.GroupBox(other_current_screen_border='e68e22',other_screen_border='282828'),
                 # widget.WindowName(for_current_screen=True),
                 
                 # widget.Spacer(),
 
                 # Command launcher
-                widget.Prompt(),
-                widget.Chord(
-                    chords_colors={
-                        "launch": ("#ff0000", "#ff00ff"),
-                    },
-                    name_transform=lambda name: name.upper(),
-                ),
+                # widget.Prompt(),
+                # widget.Chord(
+                #     chords_colors={
+                #         "launch": ("#ff0000", "#ff00ff"),
+                #     },
+                #     name_transform=lambda name: name.upper(),
+                # ),
 
                 widget.Spacer(),
 
-                widget.Sep(padding=10),
+                # widget.Sep(padding=10),
 
                 # CPU thermal sensor
-                widget.ThermalSensor(tag_sensor='CPU'),
-
+                widget.ThermalSensor(tag_sensor='CPU',format='{tag}: {temp:.0f}{unit}'),
+                
+                # separator
                 widget.Sep(padding=10),
 
                 # Memory
-                widget.Memory(),
+                widget.Memory(format='Mem: {MemUsed: .0f}/{MemTotal:.0f}'),
 
                 widget.Sep(padding=10),
                 
                 # Battery
                 widget.BatteryIcon(),
-                widget.Battery(format='{char} {percent:2.0%} {hour:d}:{min:02d} {watt:.2f} W'),
+                widget.Battery(format='{percent:2.0%} {hour:d}:{min:02d} hs'),
 
                 widget.Sep(padding=10),
 
@@ -196,7 +198,7 @@ screens = [
                 widget.Sep(padding=10),
                 
                 # Network
-                widget.Net(prefix='M', foreground='#fca103', format='{down} ↓↑ {up}'),
+                widget.Net(prefix='M', foreground='#fca103', format='↓ {down}'),
                 
                 widget.Sep(padding=10),
 
@@ -227,6 +229,7 @@ dgroups_app_rules = []  # type: list
 follow_mouse_focus = True
 bring_front_click = False
 cursor_warp = False
+
 floating_layout = layout.Floating(
     float_rules=[
         # Run the utility of `xprop` to see the wm class and name of an X client.
@@ -242,10 +245,6 @@ floating_layout = layout.Floating(
 auto_fullscreen = True
 focus_on_window_activation = "smart"
 reconfigure_screens = True
-
-# If things like steam games want to auto-minimize themselves when losing
-# focus, should we respect this or not?
-auto_minimize = True
 
 # When using the Wayland backend, this can be used to configure input devices.
 wl_input_rules = None
