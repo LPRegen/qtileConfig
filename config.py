@@ -110,7 +110,7 @@ keys = [
 
 ]
 
-groups = [Group(i) for i in "1234"]
+groups = [Group(i) for i in "123"]
 
 for i in groups:
     keys.extend(
@@ -141,7 +141,13 @@ for i in groups:
 
 # Layouts
 layouts = [
-    layout.Columns(border_focus=[color_focus],border_normal=[color_normal], border_width=2),
+    layout.Columns(
+        border_focus=[color_focus],
+        border_normal=[color_normal],
+        border_width=3,
+        margin=2,
+        insert_position=1
+        ),
     # layout.MonadTall(border_focus=color_focus, border_normal=color_normal),
 ]
 
@@ -198,7 +204,7 @@ screens = [
                 widget.Sep(padding=10),
                 
                 # Network
-                widget.Net(prefix='M', foreground='#fca103', format='↓ {down}'),
+                widget.Net(prefix='M', format='↓ {down}'),
                 
                 widget.Sep(padding=10),
 
