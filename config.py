@@ -21,8 +21,8 @@ ranger = "{terminal} -e ranger {path}".format(terminal=terminal,path='/home/manu
 logseq = "{terminal} logseq"
 
 # Color variables
-color_focus="#ff5500"
-color_normal="#f0b67d"
+color_focus="#cf590a"
+color_normal="#bda68a"
 
 keys = [
     # A list of available commands that can be bound to keys can be found
@@ -188,10 +188,10 @@ screens = [
                     padding_x=10,
                     margin_y=4,
                     borderwidth=2,
-                    this_current_screen_border='cf590a',
-                    this_screen_border='bda68a',
-                    other_current_screen_border='cf590a',
-                    other_screen_border='bda68a'
+                    this_current_screen_border=color_focus,
+                    this_screen_border=color_normal,
+                    other_current_screen_border=color_focus,
+                    other_screen_border=color_normal,
                     ),
 
                 widget.Spacer(),
