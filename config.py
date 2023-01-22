@@ -57,12 +57,14 @@ keys = [
     # Split = all windows displayed
     # Unsplit = 1 window displayed, like Max layout, but still with
     # multiple stack panes
-    Key(
-        [mod, "shift"],
-        "Return",
-        lazy.layout.toggle_split(),
-        desc="Toggle between split and unsplit sides of stack",
-    ),
+    # Key(
+    #     [mod, "shift"],
+    #     "Return",
+    #     lazy.layout.toggle_split(),
+    #     desc="Toggle between split and unsplit sides of stack",
+    # ),
+
+    # Spawn terminal
     Key([mod], "Return", lazy.spawn(terminal), desc="Launch terminal"),
 
     # Toggle between different layouts as defined below
@@ -110,7 +112,21 @@ keys = [
 
 ]
 
-groups = [Group(i) for i in "123"]
+# groups = [Group(i) for i in "123"]
+
+groups = []
+
+group_names = ["1", "2", "3",]
+
+# group_labels = ["", "", "",]
+group_labels = ["LVim", "Web", "Sys",]
+
+for i in range(len(group_names)):
+    groups.append(
+        Group(
+            name=group_names[i],
+            label=group_labels[i],
+        ))
 
 for i in groups:
     keys.extend(
@@ -156,39 +172,36 @@ widget_defaults = dict(
     fontsize=14,
     padding=3,
 )
+
 extension_defaults = widget_defaults.copy()
 
 screens = [
     Screen(
         top=bar.Bar(
             [
+
+                widget.Spacer(length=10),
+
                 # widget.CurrentLayout(max_chars=2),
                 widget.GroupBox(
+                    spacing=8,
+                    padding_x=10,
+                    margin_y=4,
                     borderwidth=2,
-                    other_current_screen_border='cf590a',
-                    other_screen_border='bda68a',
                     this_current_screen_border='cf590a',
-                    this_screen_border='bda68a'
+                    this_screen_border='bda68a',
+                    other_current_screen_border='cf590a',
+                    other_screen_border='bda68a'
                     ),
-                # widget.WindowName(for_current_screen=True),
-                
-                # widget.Spacer(),
-
-                # Command launcher
-                # widget.Prompt(),
-                # widget.Chord(
-                #     chords_colors={
-                #         "launch": ("#ff0000", "#ff00ff"),
-                #     },
-                #     name_transform=lambda name: name.upper(),
-                # ),
 
                 widget.Spacer(),
 
-                # widget.Sep(padding=10),
-
                 # CPU thermal sensor
-                widget.ThermalSensor(tag_sensor='CPU',format='{tag}: {temp:.0f}{unit}'),
+                widget.ThermalSensor(tag_sensor='CPU',
+                                     format='{tag}: {temp:.0f}{unit}',
+                                     threshold=50,
+                                     foreground_alert='ff4a4a'
+                                     ),
                 
                 # separator
                 widget.Sep(padding=10),
@@ -201,28 +214,26 @@ screens = [
                 # Battery
                 widget.BatteryIcon(),
                 widget.Battery(format='{percent:2.0%} {hour:d}:{min:02d} hs'),
-
                 widget.Sep(padding=10),
 
                 # Volume
                 widget.Volume(fmt='Vol: {}'),
-
                 widget.Sep(padding=10),
                 
                 # Network
                 widget.Net(prefix='M', format='↓ {down}'),
-                
                 widget.Sep(padding=10),
 
                 # Clock
                 widget.Clock(format="%d/%m - %a %I:%M"),
-                
                 widget.Sep(padding=10),
 
                 # Keyboard layout
                 widget.KeyboardLayout(configured_keyboards=["us", "us colemak", "latam"], display_map={"us":"US", "us colemak":"CO", "latam":"LA"}),
+
+                widget.Spacer(length=20)
             ],
-            24,
+            30,
             # border_width=[0, 0, 2, 0],  # Draw top and bottom borders
             # border_color=["000000", "000000", "ff00ff", "000000"]  # Borders are magenta
         ),
