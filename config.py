@@ -163,7 +163,13 @@ screens = [
         top=bar.Bar(
             [
                 # widget.CurrentLayout(max_chars=2),
-                widget.GroupBox(other_current_screen_border='e68e22',other_screen_border='282828'),
+                widget.GroupBox(
+                    borderwidth=2,
+                    other_current_screen_border='cf590a',
+                    other_screen_border='bda68a',
+                    this_current_screen_border='cf590a',
+                    this_screen_border='bda68a'
+                    ),
                 # widget.WindowName(for_current_screen=True),
                 
                 # widget.Spacer(),
