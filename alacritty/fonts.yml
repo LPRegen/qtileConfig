@@ -1,22 +1,22 @@
 # Font configuration
 font:
   normal:
-    family: 'JetBrainsMono Nerd Font'
+    family: 'Hack Nerd Font'
     style: Medium
 
   # Bold font face
   bold:
-    family: 'JetBrainsMono Nerd Font'
+    family: 'Hack Nerd Font'
     style: Bold
 
   # Italic font face
   italic:
-    family: 'JetBrainsMono Nerd Font'
+    family: 'Hack Nerd Font'
     style: Italic
 
   # Bold italic font face
   bold_italic:
-    family: 'JetBrainsMono Nerd Font'
+    family: 'Hack Nerd Font'
     style: Bold Italic
 
   # Point size
