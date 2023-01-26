@@ -119,7 +119,8 @@ groups = []
 group_names = ["1", "2", "3",]
 
 # group_labels = ["", "", "",]
-group_labels = ["LVim", "Web", "Sys",]
+# group_labels = ["\u143B", "\u1F60", "\u14B7",]
+group_labels = ["  ", "  ", "  ",]
 
 for i in range(len(group_names)):
     groups.append(
@@ -168,8 +169,8 @@ layouts = [
 ]
 
 widget_defaults = dict(
-    font="sans",
-    fontsize=14,
+    font="Hack Nerd Font",
+    fontsize=15,
     padding=3,
 )
 
@@ -180,13 +181,14 @@ screens = [
         top=bar.Bar(
             [
 
-                widget.Spacer(length=10),
+                widget.Spacer(length=20),
 
                 # widget.CurrentLayout(max_chars=2),
                 widget.GroupBox(
+                    fontsize=28,
                     spacing=8,
-                    padding_x=10,
-                    margin_y=4,
+                    padding_x=5,
+                    padding_y=-3,
                     borderwidth=2,
                     this_current_screen_border=color_focus,
                     this_screen_border=color_normal,
@@ -198,22 +200,22 @@ screens = [
 
                 # CPU thermal sensor
                 widget.ThermalSensor(tag_sensor='CPU',
-                                     format='{tag}: {temp:.0f}{unit}',
+                                     format='{temp:.0f} 󰔄',
                                      threshold=50,
-                                     foreground_alert='ff4a4a'
+                                     foreground_alert='ff4a4a',
                                      ),
                 
                 # separator
                 widget.Sep(padding=10),
 
                 # Memory
-                widget.Memory(format='Mem: {MemUsed: .0f}/{MemTotal:.0f}'),
+                widget.Memory(format=' {MemUsed: .0f}MB',
+                              ),
 
                 widget.Sep(padding=10),
                 
                 # Battery
-                widget.BatteryIcon(),
-                widget.Battery(format='{percent:2.0%} {hour:d}:{min:02d} hs'),
+                widget.Battery(format='{char} {percent:2.0%} {hour:d}:{min:02d} {watt:.2f} W', full_char='', charge_char=''),
                 widget.Sep(padding=10),
 
                 # Volume
@@ -221,17 +223,17 @@ screens = [
                 widget.Sep(padding=10),
                 
                 # Network
-                widget.Net(prefix='M', format='↓ {down}'),
+                widget.Net(prefix='M', format='󰮏 {down}'),
                 widget.Sep(padding=10),
 
                 # Clock
-                widget.Clock(format="%d/%m - %a %I:%M"),
-                widget.Sep(padding=10),
+                widget.Clock(format="  %d/%m - %a %I:%M"),
+                widget.Spacer(length=40),
 
                 # Keyboard layout
-                widget.KeyboardLayout(configured_keyboards=["us", "us colemak", "latam"], display_map={"us":"US", "us colemak":"CO", "latam":"LA"}),
+                widget.KeyboardLayout(configured_keyboards=["us", "us colemak", "latam"], display_map={"us":"  us", "us colemak":"  co", "latam":"  la"}),
 
-                widget.Spacer(length=20)
+                widget.Spacer(length=30)
             ],
             30,
             # border_width=[0, 0, 2, 0],  # Draw top and bottom borders
