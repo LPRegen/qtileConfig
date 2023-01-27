@@ -112,14 +112,10 @@ keys = [
 
 ]
 
-# groups = [Group(i) for i in "123"]
-
 groups = []
 
 group_names = ["1", "2", "3",]
 
-# group_labels = ["", "", "",]
-# group_labels = ["\u143B", "\u1F60", "\u14B7",]
 group_labels = ["  ", "  ", "  ",]
 
 for i in range(len(group_names)):
@@ -183,7 +179,6 @@ screens = [
 
                 widget.Spacer(length=20),
 
-                # widget.CurrentLayout(max_chars=2),
                 widget.GroupBox(
                     fontsize=28,
                     spacing=8,
@@ -209,8 +204,7 @@ screens = [
                 widget.Sep(padding=10),
 
                 # Memory
-                widget.Memory(format=' {MemUsed: .0f}MB',
-                              ),
+                widget.Memory(format=' {MemUsed: .0f}MB'),
 
                 widget.Sep(padding=10),
                 
