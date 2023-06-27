@@ -206,7 +206,6 @@ screens = [
                     spacing=8,
                     padding_x=0,
                     padding_y=-1.5,
-                    # foreground="fc0000",
                     borderwidth=2,
                     inactive=color_inactive,
                     highlight_method="line",
