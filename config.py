@@ -25,6 +25,9 @@ ranger = "{terminal} -e ranger".format(terminal=terminal, path="/home/manuel")
 # Color variables
 color_focus = "#cf590a"
 color_normal = "#bda68a"
+color_inactive = "#f5bf8c"
+color_active = "#eb7050"
+other_current_screen_color_inactive = "#3478d1"
 
 keys = [
     # A list of available commands that can be bound to keys can be found
@@ -84,7 +87,9 @@ keys = [
     # Launch dmenu
     Key([mod], "r", lazy.spawn("dmenu_run")),
     # Launch powermenu
-    Key([mod], "x", lazy.spawn("powermenu")),
+    Key(
+        [mod], "x", lazy.spawn("rofi -show power-menu -modi power-menu:rofi-power-menu")
+    ),
     # Volume Control
     Key(
         [],
@@ -174,7 +179,7 @@ layouts = [
     layout.Columns(
         border_focus=[color_focus],
         border_normal=[color_normal],
-        border_width=3,
+        border_width=2,
         margin=2,
         insert_position=1,
     ),
@@ -195,19 +200,24 @@ screens = [
     Screen(
         top=bar.Bar(
             [
-                widget.Spacer(length=20),
+                widget.Spacer(length=2),
                 widget.GroupBox(
-                    fontsize=28,
+                    fontsize=24,
                     spacing=8,
-                    padding_x=5,
-                    padding_y=-3,
+                    padding_x=0,
+                    padding_y=-1.5,
+                    # foreground="fc0000",
                     borderwidth=2,
+                    inactive=color_inactive,
+                    highlight_method="line",
+                    active=color_active,
                     this_current_screen_border=color_focus,
                     this_screen_border=color_normal,
                     other_current_screen_border=color_focus,
-                    other_screen_border=color_normal,
+                    other_screen_border=other_current_screen_color_inactive,
                 ),
                 spacer,
+                widget.Systray(),
                 # CPU thermal sensor
                 widget.ThermalSensor(
                     tag_sensor="CPU",
