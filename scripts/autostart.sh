@@ -1,8 +1,8 @@
-#!/bin/env bash
+#!/bin/bash
 
 # set background
-# bash $HOME/.config/qtile/scripts/.fehbg
-feh --bg-fill ~/.config/qtile/wallpaper.jpg
+dunst &
+$HOME/.fehbg
 
 # Kill if already running
 # killall -9 picom xfce4-power-manager ksuperkey duns
@@ -28,9 +28,6 @@ feh --bg-fill ~/.config/qtile/wallpaper.jpg
 # if [[ ! `pidof xfce-polkit` ]]; then
     # /usr/lib/xfce-polkit/xfce-polkit &
 # fi
-
-# replace neovim colorscheme
-# sed -i "s/theme =.*$/theme = \"chadracula\",/g" $HOME/.config/nvim/lua/custom/chadrc.lua
 
 # change xfce4-terminal colorscheme
 # XFCE_TERM_PATH="$HOME/.config/xfce4/terminal"
