@@ -256,9 +256,6 @@ screens = [
                 widget.Spacer(length=30),
             ],
             30,
-            # border_width=[0, 0, 2, 0],  # Draw top and bottom borders
-            # border_color=["000000", "000000", "ff00ff", "000000"]
-            # Borders are magenta
         ),
     ),
 ]
