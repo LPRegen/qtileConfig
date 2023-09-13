@@ -132,9 +132,9 @@ group_names = [
 ]
 
 group_labels = [
-    "  ",
-    "  ",
-    "  ",
+    "1",
+    "2",
+    "3",
 ]
 
 for i in range(len(group_names)):
@@ -236,7 +236,7 @@ screens = [
                 ),
                 widget.Sep(padding=10),
                 # Volume
-                widget.Volume(fmt="Vol: {}"),
+                widget.Volume(fmt="Vol: {}", step=5),
                 widget.Sep(padding=10),
                 # Network
                 widget.Net(prefix="M", format="󰮏 {down}"),
