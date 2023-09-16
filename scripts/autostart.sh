@@ -2,7 +2,8 @@
 
 # set background
 dunst &
-$HOME/.fehbg
+$HOME/.fehbg &
+$HOME/.config/qtile/scripts/keyboard.sh
 
 # Kill if already running
 # killall -9 picom xfce4-power-manager ksuperkey duns
@@ -28,10 +29,6 @@ $HOME/.fehbg
 # if [[ ! `pidof xfce-polkit` ]]; then
     # /usr/lib/xfce-polkit/xfce-polkit &
 # fi
-
-# change xfce4-terminal colorscheme
-# XFCE_TERM_PATH="$HOME/.config/xfce4/terminal"
-# cp "$XFCE_TERM_PATH"/colorschemes/dracula "$XFCE_TERM_PATH"/terminalrc
 
 # change cava colorscheme
 # CAVA_PATH="$HOME/.config/cava"
