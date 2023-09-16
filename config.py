@@ -121,6 +121,7 @@ keys = [
     Key([mod, "shift"], "f", lazy.spawn(ranger)),
     Key([mod, "shift"], "w", lazy.spawn("firefox-developer-edition")),
     Key([mod, "shift"], "b", lazy.spawn("blueberry")),
+    Key([mod, "shift"], "e", lazy.spawn("thunar")),
 ]
 
 groups = []
