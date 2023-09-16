@@ -1,8 +1,10 @@
 #!/bin/bash
 
-# set background
+# notifications
 dunst &
+# set bg
 $HOME/.fehbg &
+# keyboard remaps
 $HOME/.config/qtile/scripts/keyboard.sh
 
 # Kill if already running
