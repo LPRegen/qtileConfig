@@ -23,10 +23,10 @@ terminal = "kitty"
 ranger = "{terminal} -e ranger".format(terminal=terminal)
 
 # Color variables
-color_focus = "#cf590a"
-color_normal = "#bda68a"
-color_inactive = "#f5bf8c"
-color_active = "#eb7050"
+color_focus = "#bd9ef0"
+color_normal = "#6a5d80"
+color_inactive = "#6795f0"
+color_active = "#f2724b"
 other_current_screen_color_inactive = "#3478d1"
 
 keys = [
@@ -124,52 +124,71 @@ keys = [
     Key([mod, "shift"], "e", lazy.spawn("thunar")),
 ]
 
-groups = []
-
-group_names = [
-    "1",
-    "2",
-    "3",
-]
-
-group_labels = [
-    "1",
-    "2",
-    "3",
-]
-
-for i in range(len(group_names)):
-    groups.append(
-        Group(
-            name=group_names[i],
-            label=group_labels[i],
-        )
-    )
+# groups = []
+#
+# group_names = [
+#     "1",
+#     "2",
+#     "3",
+# ]
+#
+# group_labels = [
+#     "1",
+#     "2",
+#     "3",
+# ]
+#
+# for i in range(len(group_names)):
+#     groups.append(
+#         Group(
+#             name=group_names[i],
+#             label=group_labels[i],
+#         )
+#     )
+#
+# for i in groups:
+#     keys.extend(
+#         [
+#             # mod1 + letter of group = switch to group
+#             Key(
+#                 [mod],
+#                 i.name,
+#                 lazy.group[i.name].toscreen(),
+#                 desc="Switch to group {}".format(i.name),
+#             ),
+#             # mod1 + shift + letter of group = switch to & move focused window to group
+#             # Key(
+#             #     [mod, "shift"],
+#             #     i.name,
+#             #     lazy.window.togroup(i.name, switch_group=True),
+#             #     desc="Switch to & move focused window to group {}".format(i.name),
+#             # ),
+#             # Or, use below if you prefer not to switch to that group.
+#             # # mod1 + shift + letter of group = move focused window to group
+#             Key(
+#                 [mod, "shift"],
+#                 i.name,
+#                 lazy.window.togroup(i.name),
+#                 desc="move focused window to group {}".format(i.name),
+#             ),
+#         ]
+#     )
+groups = [Group(f"{i+1}", label=f"{i+1}") for i in range(3)]
 
 for i in groups:
     keys.extend(
         [
-            # mod1 + letter of group = switch to group
             Key(
                 [mod],
                 i.name,
                 lazy.group[i.name].toscreen(),
                 desc="Switch to group {}".format(i.name),
             ),
-            # mod1 + shift + letter of group = switch to & move focused window to group
-            # Key(
-            #     [mod, "shift"],
-            #     i.name,
-            #     lazy.window.togroup(i.name, switch_group=True),
-            #     desc="Switch to & move focused window to group {}".format(i.name),
-            # ),
-            # Or, use below if you prefer not to switch to that group.
-            # # mod1 + shift + letter of group = move focused window to group
             Key(
                 [mod, "shift"],
                 i.name,
                 lazy.window.togroup(i.name),
-                desc="move focused window to group {}".format(i.name),
+                desc="Move focused window to group {}".format(i.name),
             ),
         ]
     )
@@ -183,12 +202,11 @@ layouts = [
         margin=2,
         insert_position=1,
     ),
-    # layout.MonadTall(border_focus=color_focus, border_normal=color_normal),
 ]
 
 widget_defaults = dict(
     font="Fira Code Nerd Font",
-    fontsize=14,
+    fontsize=13,
     padding=3,
 )
 
@@ -200,65 +218,212 @@ screens = [
     Screen(
         top=bar.Bar(
             [
-                widget.Spacer(length=2),
+                widget.Spacer(
+                    length=15,
+                    background="#282738",
+                ),
+                # widget.Image(
+                #     filename="~/.config/qtile/assets/launch_Icon.png",
+                #     margin=2,
+                #     background="#282738",
+                #     mouse_callbacks={"Button1": power},
+                # ),
+                widget.Image(
+                    filename="~/.config/qtile/assets/6.png",
+                ),
                 widget.GroupBox(
-                    fontsize=24,
+                    fontsize=18,
                     spacing=8,
-                    padding_x=0,
-                    padding_y=-1.5,
-                    borderwidth=2,
+                    # borderwidth=3,
+                    block_highlight_text_color="#ffffff",
+                    highlight_color="#53469e",
                     inactive=color_inactive,
-                    highlight_method="line",
+                    highlight_method="block",
                     active=color_active,
+                    foreground="#4B427E",
+                    background="#353446",
                     this_current_screen_border=color_focus,
                     this_screen_border=color_normal,
                     other_current_screen_border=color_focus,
                     other_screen_border=other_current_screen_color_inactive,
+                    urgent_border="#353446",
+                    rounded=True,
+                    disable_drag=True,
                 ),
-                spacer,
-                widget.Systray(),
-                # CPU thermal sensor
-                widget.ThermalSensor(
-                    tag_sensor="CPU",
-                    format="{temp:.0f} 󰔄",
-                    threshold=50,
-                    foreground_alert="ff4a4a",
+                widget.Spacer(
+                    length=8,
+                    background="#353446",
                 ),
-                # separator
-                widget.Sep(padding=10),
-                # Memory
-                widget.Memory(format="󰍛{MemUsed: .0f}MB"),
-                widget.Sep(padding=10),
-                # Battery
+                widget.Image(
+                    filename="~/.config/qtile/assets/1.png",
+                ),
+                # widget.Image(
+                #     filename="~/.config/qtile/assets/5.png",
+                # ),
+                # widget.Image(
+                #     filename="~/.config/qtile/assets/search.png",
+                #     margin=2,
+                #     background="#282738",
+                # mouse_callbacks={"Button1": search},
+                # ),
+                # widget.TextBox(
+                #     fmt="Search",
+                #     background="#282738",
+                #     fontsize=13,
+                #     foreground="#CAA9E0",
+                #     # mouse_callbacks={"Button1": search},
+                # ),
+                # widget.Image(
+                #     filename="~/.config/qtile/assets/4.png",
+                # ),
+                widget.WindowName(
+                    background="#353446",
+                    format="",
+                    foreground="#CAA9E0",
+                    empty_group_string="Desktop",
+                    fontsize=13,
+                    for_current_screen=True,
+                ),
+                widget.Image(
+                    filename="~/.config/qtile/assets/3.png",
+                ),
+                widget.Systray(
+                    background="#282738",
+                    fontsize=2,
+                ),
+                widget.TextBox(
+                    text=" ",
+                    background="#282738",
+                ),
+                widget.Image(
+                    filename="~/.config/qtile/assets/6.png",
+                    background="#353446",
+                ),
+                widget.Image(
+                    filename="~/.config/qtile/assets/Drop1.png",
+                ),
+                widget.Net(
+                    format=" {up}   {down} ",
+                    background="#353446",
+                    foreground="#CAA9E0",
+                    prefix="k",
+                ),
+                widget.Image(
+                    filename="~/.config/qtile/assets/2.png",
+                ),
+                widget.Spacer(
+                    length=8,
+                    background="#353446",
+                ),
+                widget.Image(
+                    filename="~/.config/qtile/assets/Misc/ram.png",
+                    background="#353446",
+                ),
+                widget.Spacer(
+                    length=-7,
+                    background="#353446",
+                ),
+                widget.Memory(
+                    background="#353446",
+                    format="{MemUsed: .0f}{mm}",
+                    foreground="#CAA9E0",
+                    fontsize=13,
+                    update_interval=5,
+                ),
+                widget.Image(
+                    filename="~/.config/qtile/Assets/Drop2.png",
+                ),
+                widget.Image(
+                    filename="~/.config/qtile/assets/2.png",
+                ),
+                widget.Spacer(
+                    length=8,
+                    background="#353446",
+                ),
+                widget.BatteryIcon(
+                    theme_path="~/.config/qtile/assets/Battery/",
+                    background="#353446",
+                    scale=1,
+                ),
                 widget.Battery(
-                    format="{char} {percent:2.0%} {hour:d}:{min:02d} {watt:.2f} W",
-                    full_char="",
-                    charge_char="",
+                    background="#353446",
+                    foreground="#CAA9E0",
+                    format="{percent:2.0%}",
+                    fontsize=13,
                 ),
-                widget.Sep(padding=10),
-                # Volume
-                widget.Volume(fmt="Vol: {}", step=5),
-                widget.Sep(padding=10),
-                # Network
-                widget.Net(prefix="M", format="󰮏 {down}"),
-                widget.Sep(padding=10),
-                # Clock
-                widget.Clock(format="  %d/%m - %a %I:%M"),
-                widget.Spacer(length=30),
-                # Keyboard layout
+                widget.Image(
+                    filename="~/.config/qtile/assets/2.png",
+                ),
+                widget.Spacer(
+                    length=8,
+                    background="#353446",
+                ),
+                # widget.Battery(format=' {percent:2.0%}',
+                # font="JetBrains Mono ExtraBold",
+                # fontsize=12,
+                # padding=10,
+                # background='#353446',
+                # ),
+                # widget.Memory(format='﬙{MemUsed: .0f}{mm}',
+                # fontsize=12,
+                # padding=10,
+                # background='#4B4D66',
+                # ),
+                widget.Volume(
+                    theme_path="~/.config/qtile/assets/Volume/",
+                    emoji=True,
+                    fontsize=13,
+                    background="#353446",
+                ),
+                widget.Spacer(
+                    length=-5,
+                    background="#353446",
+                ),
+                widget.Volume(
+                    background="#353446",
+                    foreground="#CAA9E0",
+                    fontsize=13,
+                ),
+                widget.Image(
+                    filename="~/.config/qtile/assets/5.png",
+                    background="#353446",
+                ),
+                widget.Image(
+                    filename="~/.config/qtile/assets/Misc/clock.png",
+                    background="#282738",
+                    margin_y=6,
+                    margin_x=5,
+                ),
+                widget.Clock(
+                    format="%I:%M %p",
+                    background="#282738",
+                    foreground="#CAA9E0",
+                    fontsize=13,
+                ),
+                widget.Spacer(
+                    length=18,
+                    background="#282738",
+                ),
                 widget.KeyboardLayout(
-                    configured_keyboards=["us", "us colemak", "latam"],
+                    configured_keyboards=["us", "latam"],
+                    background="#282738",
+                    foreground="#CAA9E0",
                     display_map={
                         "us": "  us",
-                        "us colemak": "  co",
                         "latam": "  la",
                     },
                 ),
-                widget.Spacer(length=30),
+                widget.Spacer(
+                    length=18,
+                    background="#282738",
+                ),
             ],
-            30,
+            28,
+            border_color="#282738",
+            border_width=[0, 0, 0, 0],
+            margin=[2, 2, 3, 2],
         ),
-    ),
+    )
 ]
 
 # Drag floating layouts.
