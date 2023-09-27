@@ -1,8 +1,6 @@
-# Imports for startup
 import os
 import subprocess
 
-# Imports of PY Libraries
 from libqtile import bar, layout, widget, hook
 from libqtile.config import Click, Drag, Group, Key, Match, Screen
 from libqtile.lazy import lazy
@@ -124,55 +122,6 @@ keys = [
     Key([mod, "shift"], "e", lazy.spawn("thunar")),
 ]
 
-# groups = []
-#
-# group_names = [
-#     "1",
-#     "2",
-#     "3",
-# ]
-#
-# group_labels = [
-#     "1",
-#     "2",
-#     "3",
-# ]
-#
-# for i in range(len(group_names)):
-#     groups.append(
-#         Group(
-#             name=group_names[i],
-#             label=group_labels[i],
-#         )
-#     )
-#
-# for i in groups:
-#     keys.extend(
-#         [
-#             # mod1 + letter of group = switch to group
-#             Key(
-#                 [mod],
-#                 i.name,
-#                 lazy.group[i.name].toscreen(),
-#                 desc="Switch to group {}".format(i.name),
-#             ),
-#             # mod1 + shift + letter of group = switch to & move focused window to group
-#             # Key(
-#             #     [mod, "shift"],
-#             #     i.name,
-#             #     lazy.window.togroup(i.name, switch_group=True),
-#             #     desc="Switch to & move focused window to group {}".format(i.name),
-#             # ),
-#             # Or, use below if you prefer not to switch to that group.
-#             # # mod1 + shift + letter of group = move focused window to group
-#             Key(
-#                 [mod, "shift"],
-#                 i.name,
-#                 lazy.window.togroup(i.name),
-#                 desc="move focused window to group {}".format(i.name),
-#             ),
-#         ]
-#     )
 groups = [Group(f"{i+1}", label=f"{i+1}") for i in range(3)]
 
 for i in groups:
@@ -193,7 +142,6 @@ for i in groups:
         ]
     )
 
-# Layouts
 layouts = [
     layout.Columns(
         border_focus=[color_focus],
@@ -306,7 +254,7 @@ screens = [
                     format=" {up}   {down} ",
                     background="#353446",
                     foreground="#CAA9E0",
-                    prefix="k",
+                    prefix="M",
                 ),
                 widget.Image(
                     filename="~/.config/qtile/assets/2.png",
