@@ -170,12 +170,12 @@ screens = [
                     length=15,
                     background="#282738",
                 ),
-                # widget.Image(
-                #     filename="~/.config/qtile/assets/launch_Icon.png",
-                #     margin=2,
-                #     background="#282738",
-                #     mouse_callbacks={"Button1": power},
-                # ),
+                widget.Image(
+                    filename="~/.config/qtile/assets/launch_Icon.png",
+                    margin=2,
+                    background="#282738",
+                    # mouse_callbacks={"Button1": power},
+                ),
                 widget.Image(
                     filename="~/.config/qtile/assets/6.png",
                 ),
