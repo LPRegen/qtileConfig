@@ -120,6 +120,8 @@ keys = [
     Key([mod, "shift"], "w", lazy.spawn("firefox-developer-edition")),
     Key([mod, "shift"], "b", lazy.spawn("blueberry")),
     Key([mod, "shift"], "e", lazy.spawn("thunar")),
+    Key([mod, "shift"], "s", lazy.spawn("xfce4-screenshooter")),
+    Key([mod, "shift"], "d", lazy.spawn("discord")),
 ]
 
 groups = [Group(f"{i+1}", label=f"{i+1}") for i in range(3)]
@@ -251,10 +253,10 @@ screens = [
                     filename="~/.config/qtile/assets/Drop1.png",
                 ),
                 widget.Net(
-                    format=" {up}   {down} ",
+                    format=" {up:6.2f}   {down:6.2f} ",
                     background="#353446",
                     foreground="#CAA9E0",
-                    prefix="M",
+                    prefix = 'M',
                 ),
                 widget.Image(
                     filename="~/.config/qtile/assets/2.png",
