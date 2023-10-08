@@ -17,7 +17,7 @@ def autostart():
 
 # Variables
 mod = "mod4"
-terminal = "kitty"
+terminal = "kitty -e fish"
 ranger = "{terminal} -e ranger".format(terminal=terminal)
 
 # Color variables
@@ -120,7 +120,7 @@ keys = [
     Key([mod, "shift"], "w", lazy.spawn("firefox-developer-edition")),
     Key([mod, "shift"], "b", lazy.spawn("blueberry")),
     Key([mod, "shift"], "e", lazy.spawn("thunar")),
-    Key([mod, "shift"], "s", lazy.spawn("xfce4-screenshooter")),
+    Key([mod, "shift"], "s", lazy.spawn("spectacle --activewindow")),
     Key([mod, "shift"], "d", lazy.spawn("discord")),
 ]
 
@@ -155,7 +155,7 @@ layouts = [
 ]
 
 widget_defaults = dict(
-    font="Fira Code Nerd Font",
+    font="Hasklug Nerd Font",
     fontsize=13,
     padding=3,
 )
