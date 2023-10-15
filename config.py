@@ -17,7 +17,7 @@ def autostart():
 
 # Variables
 mod = "mod4"
-terminal = "kitty -e fish"
+terminal = "kitty"
 ranger = "{terminal} -e ranger".format(terminal=terminal)
 
 # Color variables
@@ -76,6 +76,7 @@ keys = [
     # Kill focused window.
     Key([mod], "w", lazy.window.kill(), desc="Kill focused window"),
     # Reload Qtile configuration
+    Key([mod], 'f', lazy.window.toggle_floating(), desc="Toggle floating",),
     Key([mod, "control"], "r", lazy.reload_config(), desc="Reload the config"),
     # Shutdown Qtile
     # Key([mod, "control"], "q", lazy.shutdown(), desc="Shutdown Qtile"),
@@ -99,6 +100,7 @@ keys = [
         lazy.spawn("pactl set-sink-volume @DEFAULT_SINK@ +5%"),
     ),
     Key([], "XF86AudioMute", lazy.spawn("pactl set-sink-mute @DEFAULT_SINK@ toggle")),
+    Key([mod, 'shift'], 'm', lazy.spawn('pactl set-source-mute @DEFAULT_SOURCE@ toggle')),
     # Play/pause audio
     Key([], "XF86AudioPlay", lazy.spawn("playerctl play-pause")),
     # XF86AudioNext
@@ -120,7 +122,7 @@ keys = [
     Key([mod, "shift"], "w", lazy.spawn("firefox-developer-edition")),
     Key([mod, "shift"], "b", lazy.spawn("blueberry")),
     Key([mod, "shift"], "e", lazy.spawn("thunar")),
-    Key([mod, "shift"], "s", lazy.spawn("spectacle --activewindow")),
+    Key([mod, "shift"], "s", lazy.spawn("xfce4-screenshooter")),
     Key([mod, "shift"], "d", lazy.spawn("discord")),
 ]
 
