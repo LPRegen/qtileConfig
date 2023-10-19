@@ -76,7 +76,12 @@ keys = [
     # Kill focused window.
     Key([mod], "w", lazy.window.kill(), desc="Kill focused window"),
     # Reload Qtile configuration
-    Key([mod], 'f', lazy.window.toggle_floating(), desc="Toggle floating",),
+    Key(
+        [mod],
+        "f",
+        lazy.window.toggle_floating(),
+        desc="Toggle floating",
+    ),
     Key([mod, "control"], "r", lazy.reload_config(), desc="Reload the config"),
     # Shutdown Qtile
     # Key([mod, "control"], "q", lazy.shutdown(), desc="Shutdown Qtile"),
@@ -100,7 +105,9 @@ keys = [
         lazy.spawn("pactl set-sink-volume @DEFAULT_SINK@ +5%"),
     ),
     Key([], "XF86AudioMute", lazy.spawn("pactl set-sink-mute @DEFAULT_SINK@ toggle")),
-    Key([mod, 'shift'], 'm', lazy.spawn('pactl set-source-mute @DEFAULT_SOURCE@ toggle')),
+    Key(
+        [mod, "shift"], "m", lazy.spawn("pactl set-source-mute @DEFAULT_SOURCE@ toggle")
+    ),
     # Play/pause audio
     Key([], "XF86AudioPlay", lazy.spawn("playerctl play-pause")),
     # XF86AudioNext
@@ -258,7 +265,7 @@ screens = [
                     format=" {up:6.2f}   {down:6.2f} ",
                     background="#353446",
                     foreground="#CAA9E0",
-                    prefix = 'M',
+                    prefix="M",
                 ),
                 widget.Image(
                     filename="~/.config/qtile/assets/2.png",
