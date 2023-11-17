@@ -133,7 +133,7 @@ keys = [
     Key([mod, "shift"], "d", lazy.spawn("discord")),
 ]
 
-groups = [Group(f"{i+1}", label=f"{i+1}") for i in range(3)]
+groups = [Group(f"{i+1}", label=f"{i+1}") for i in range(4)]
 
 for i in groups:
     keys.extend(
